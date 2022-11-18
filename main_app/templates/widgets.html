@@ -13,7 +13,7 @@
 	<tr>
 		<td>{{widget.description}}</td>
 		<td>{{widget.quantity}}</td>
-		<td>DELETE</td>
+		<td><a href="{% url 'delete_widget' widget.id%}">DELETE</a></td>
 	</tr>
 	{%endfor%}
 	<tr>

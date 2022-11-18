@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Widget
 from .forms import WidgetForm
 # Create your views here.
@@ -8,7 +8,7 @@ def home(req):
         form = WidgetForm(req.POST)
         new_widget = form.save(commit=False)
         new_widget.save()
-        
+
     widgets = list(Widget.objects.values())
 
     count = 0 
@@ -23,3 +23,7 @@ def home(req):
         "form" : form
     }
     return render(req, 'widgets.html', data) 
+
+def delete_widget(req, widget_id):
+    widg = Widget.objects.filter(id = widget_id).delete()
+    return redirect(home)
