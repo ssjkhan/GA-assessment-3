@@ -21,4 +21,13 @@
 		<td>{{count}}</td>
 	</tr>
 </table>
-{% endif %} {% endblock %}
+{% endif %}
+<form method="post">
+	{% csrf_token %} {{form}}
+	<br />
+	<input
+		type="submit"
+		value="Add a wacky widget!"
+	/>
+</form>
+{% endblock %}
